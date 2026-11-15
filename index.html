@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CampusConnect | Student Opportunities</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #1d2939;
+    line-height: 1.6;
+}
+
+header {
+    background: #082b55;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #f4b942;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.hero {
+    background: linear-gradient(135deg, #082b55, #12559b);
+    color: white;
+    text-align: center;
+    padding: 85px 20px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: #f4b942;
+}
+
+.hero p {
+    max-width: 650px;
+    margin: auto;
+    font-size: 17px;
+}
+
+.search-box {
+    max-width: 650px;
+    margin: 30px auto 0;
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.search-box button {
+    padding: 15px 22px;
+    background: #f4b942;
+    color: #082b55;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.container {
+    padding: 55px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.section-title h2 {
+    color: #082b55;
+    font-size: 28px;
+}
+
+.section-title p {
+    color: #667085;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-bottom: 50px;
+}
+
+.category {
+    background: white;
+    padding: 25px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+    border-bottom: 3px solid #f4b942;
+}
+
+.category h3 {
+    color: #082b55;
+}
+
+.category p {
+    color: #667085;
+    font-size: 13px;
+}
+
+.filters {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.filters button {
+    padding: 10px 18px;
+    margin: 5px;
+    border: 1px solid #082b55;
+    background: white;
+    color: #082b55;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: #082b55;
+    color: white;
+}
+
+.opportunities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+}
+
+.card h3 {
+    color: #082b55;
+    margin: 12px 0;
+}
+
+.badge {
+    display: inline-block;
+    background: #e8f1ff;
+    color: #12559b;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.card p {
+    color: #667085;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.card a {
+    display: inline-block;
+    background: #082b55;
+    color: white;
+    text-decoration: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    font-size: 13px;
+}
+
+#status {
+    text-align: center;
+    padding: 20px;
+    color: #667085;
+}
+
+footer {
+    background: #082b55;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer span {
+    color: #f4b942;
+}
+
+@media(max-width: 600px) {
+    header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0 7px;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .container {
+        padding: 40px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Campus<span>Connect</span></div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#opportunities">Opportunities</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>Opportunities <span>Within Your Reach</span></h1>
+
+    <p>
+        Discover scholarships, internships, professional certifications
+        and free learning resources designed to help students grow.
+    </p>
+
+    <div class="search-box">
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search opportunities..."
+        >
+
+        <button onclick="filterOpportunities()">Search</button>
+    </div>
+</section>
+
+<main class="container">
+
+    <section id="categories">
+        <div class="section-title">
+            <h2>Explore Categories</h2>
+            <p>Find opportunities that match your goals.</p>
+        </div>
+
+        <div class="categories">
+
+            <div class="category" onclick="selectCategory('Scholarship')">
+                <h3>Scholarships</h3>
+                <p>Funding opportunities for students.</p>
+            </div>
+
+            <div class="category" onclick="selectCategory('Internship')">
+                <h3>Internships</h3>
+                <p>Gain practical work experience.</p>
+            </div>
+
+            <div class="category" onclick="
